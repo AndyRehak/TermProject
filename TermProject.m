@@ -17,3 +17,13 @@ Mat4=xlsread('01.xlsx','sheet4','B:B');
 
 Strain5=xlsread('01.xlsx','sheet5','A:A');
 Mat5=xlsread('01.xlsx','sheet5','B:B');
+
+plot(Strain1,Mat1)
+hold on
+plot(Strain2,Mat2)
+plot(Strain3,Mat3)
+plot(Strain4,Mat4)
+plot(Strain5,Mat5)
+legend('Sheet1','Sheet2','Sheet3','Sheet4','Sheet5','Location','southeast')
+xlabel('Strain')
+Ylabel('Mat')
