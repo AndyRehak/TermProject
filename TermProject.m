@@ -33,6 +33,13 @@ title('Stress vs. Strain')
 %B
 
 
+toughness1=trapz(Mat1)
+toughness2=trapz(Mat2)
+toughness3=trapz(Mat3)
+toughness4=trapz(Mat4)
+toughness5=trapz(Mat5)
+
+
 %C
 
 
