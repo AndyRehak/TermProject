@@ -18,6 +18,7 @@ Mat4=xlsread('01.xlsx','sheet4','B:B');
 Strain5=xlsread('01.xlsx','sheet5','A:A');
 Mat5=xlsread('01.xlsx','sheet5','B:B');
 
+%A
 plot(Strain1,Mat1)
 hold on
 plot(Strain2,Mat2)
@@ -28,3 +29,11 @@ legend('Sheet1','Sheet2','Sheet3','Sheet4','Sheet5','Location','southeast')
 xlabel('Strain')
 ylabel('Stress')
 title('Stress vs. Strain')
+
+%B
+
+
+%C
+
+
+%D
