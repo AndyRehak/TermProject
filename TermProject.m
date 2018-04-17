@@ -26,8 +26,8 @@ plot(Strain3,Mat3)
 plot(Strain4,Mat4)
 plot(Strain5,Mat5)
 legend('Sheet1','Sheet2','Sheet3','Sheet4','Sheet5','Location','southeast')
-xlabel('Strain')
-ylabel('Stress')
+xlabel('Strain(%)')
+ylabel('Stress(MPa)')
 title('Stress vs. Strain')
 
 %B
