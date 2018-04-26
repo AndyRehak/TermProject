@@ -240,6 +240,53 @@ end
 x5=1+Strain5(1:loc);
 y5=Mat5(1:loc);
 
+%ogden model
+[cons1]=fminsearch(@error,[1,1],[],x1,y1);
+[cons2]=fminsearch(@error,[1,1],[],x2,y2);
+[cons3]=fminsearch(@error,[1,1],[],x3,y3);
+[cons4]=fminsearch(@error,[1,1],[],x4,y4);
+[cons5]=fminsearch(@error,[1,1],[],x5,y5);
+
+
+
+sig_model1=((2.*cons1(1))/cons1(2)).*(x1.^cons1(2)-x1.^-(cons1(2)/2));
+sigbar1=sum(y1)/length(y1);
+st=sum((y1-sigbar1).^2);
+sr=sum((y1-sig_model1).^2);
+coefogr1=(st-sr)/st;
+
+sig_model2=((2.*cons1(1))/cons1(2)).*(x2.^cons1(2)-x2.^-(cons1(2)/2));
+sigbar2=sum(y2)/length(y2);
+st=sum((y2-sigbar2).^2);
+sr=sum((y2-sig_model2).^2);
+coefogr2=(st-sr)/st;
+
+sig_model3=((2.*cons1(1))/cons1(2)).*(x3.^cons1(2)-x3.^-(cons1(2)/2));
+sigbar3=sum(y3)/length(y3);
+st=sum((y3-sigbar3).^2);
+sr=sum((y3-sig_model3).^2);
+coefogr3=(st-sr)/st;
+
+sig_model4=((2.*cons1(1))/cons1(2)).*(x4.^cons1(2)-x4.^-(cons1(2)/2));
+sigbar4=sum(y4)/length(y4);
+st=sum((y4-sigbar4).^2);
+sr=sum((y4-sig_model4).^2);
+coefogr4=(st-sr)/st;
+
+sig_model5=((2.*cons1(1))/cons1(2)).*(x5.^cons1(2)-x5.^-(cons1(2)/2));
+sigbar5=sum(y5)/length(y5);
+st=sum((y5-sigbar5).^2);
+sr=sum((y5-sig_model5).^2);
+coefogr5=(st-sr)/st;
+
+
+
+
+
+function [E]= error(a,x,y)
+ y_model1=(2*a(1)/a(2)).*(x.^a(2)-x.^(-a(2)/2));
+ E=sum((y-y_model1).^2);
+end
 
 
 
