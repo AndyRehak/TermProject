@@ -259,31 +259,31 @@ sig_model1=((2.*cons1(1))/cons1(2)).*(x1.^cons1(2)-x1.^-(cons1(2)/2));
 sigbar1=sum(y1)/length(y1);
 st=sum((y1-sigbar1).^2);
 sr=sum((y1-sig_model1).^2);
-coefogr1=(st-sr)/st;
+Ogden_r1=(st-sr)/st;
 
 sig_model2=((2.*cons1(1))/cons1(2)).*(x2.^cons1(2)-x2.^-(cons1(2)/2));
 sigbar2=sum(y2)/length(y2);
 st=sum((y2-sigbar2).^2);
 sr=sum((y2-sig_model2).^2);
-coefogr2=(st-sr)/st;
+Ogden_r2=(st-sr)/st;
 
 sig_model3=((2.*cons1(1))/cons1(2)).*(x3.^cons1(2)-x3.^-(cons1(2)/2));
 sigbar3=sum(y3)/length(y3);
 st=sum((y3-sigbar3).^2);
 sr=sum((y3-sig_model3).^2);
-coefogr3=(st-sr)/st;
+Ogden_r3=(st-sr)/st;
 
 sig_model4=((2.*cons1(1))/cons1(2)).*(x4.^cons1(2)-x4.^-(cons1(2)/2));
 sigbar4=sum(y4)/length(y4);
 st=sum((y4-sigbar4).^2);
 sr=sum((y4-sig_model4).^2);
-coefogr4=(st-sr)/st;
+Ogden_r4=(st-sr)/st;
 
 sig_model5=((2.*cons1(1))/cons1(2)).*(x5.^cons1(2)-x5.^-(cons1(2)/2));
 sigbar5=sum(y5)/length(y5);
 st=sum((y5-sigbar5).^2);
 sr=sum((y5-sig_model5).^2);
-coefogr5=(st-sr)/st;
+Ogden_r5=(st-sr)/st;
 
 %Mooney-Rivlin model
 
