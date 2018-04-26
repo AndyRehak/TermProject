@@ -18,6 +18,9 @@ Mat4=xlsread('01.xlsx','sheet4','B:B');
 Strain5=xlsread('01.xlsx','sheet5','A:A');
 Mat5=xlsread('01.xlsx','sheet5','B:B');
 
+
+
+
 %A
 plot(Strain1,Mat1)
 hold on
@@ -30,14 +33,17 @@ xlabel('Strain(%)')
 ylabel('Stress(MPa)')
 title('Stress vs. Strain')
 
+
+
+
 %B
-
-
 toughness1=trapz(Mat1);
 toughness2=trapz(Mat2);
 toughness3=trapz(Mat3);
 toughness4=trapz(Mat4);
 toughness5=trapz(Mat5);
+
+
 
 
 %C
@@ -193,6 +199,8 @@ Young5_Value2=(-Mat5(x2+2)+8*Mat5(x2+1)-8*Mat5(x2-1)+Mat5(x2-2))/(12*h2);
 Young5_Value3=(-Mat5(x3+2)+8*Mat5(x3+1)-8*Mat5(x3-1)+Mat5(x3-2))/(12*h3);
 
 
+
+
 %D
 max=0;
 for i=1:length(Mat1)
@@ -247,8 +255,6 @@ y5=Mat5(1:loc);
 [cons4]=fminsearch(@error,[1,1],[],x4,y4);
 [cons5]=fminsearch(@error,[1,1],[],x5,y5);
 
-
-
 sig_model1=((2.*cons1(1))/cons1(2)).*(x1.^cons1(2)-x1.^-(cons1(2)/2));
 sigbar1=sum(y1)/length(y1);
 st=sum((y1-sigbar1).^2);
@@ -279,8 +285,44 @@ st=sum((y5-sigbar5).^2);
 sr=sum((y5-sig_model5).^2);
 coefogr5=(st-sr)/st;
 
+%Mooney-Rivlin model
 
+[Mooney_c1]=fminsearch(@error2,[1,1],[],x1,y1);
+[Mooney_c2]=fminsearch(@error2,[1,1],[],x2,y2);
+[Mooney_c3]=fminsearch(@error2,[1,1],[],x3,y3);
+[Mooney_c4]=fminsearch(@error2,[1,1],[],x4,y4);
+[Mooney_c5]=fminsearch(@error2,[1,1],[],x5,y5);
 
+Mooney_model_1=(2.*Mooney_c1(1).*(x1.^2-(1./x1)))+(2.*Mooney_c1(2).*(x1-(1./x1.^2)));
+Mooney_model_2=(2.*Mooney_c2(1).*(x2.^2-(1./x2)))+(2.*Mooney_c2(2).*(x2-(1./x2.^2)));
+Mooney_model_3=(2.*Mooney_c3(1).*(x3.^2-(1./x3)))+(2.*Mooney_c3(2).*(x3-(1./x3.^2)));
+Mooney_model_4=(2.*Mooney_c4(1).*(x4.^2-(1./x4)))+(2.*Mooney_c4(2).*(x4-(1./x4.^2)));
+Mooney_model_5=(2.*Mooney_c5(1).*(x5.^2-(1./x5)))+(2.*Mooney_c5(2).*(x5-(1./x5.^2)));
+
+Mooneybar=sum(y1)/length(y1);
+st=sum((y1-Mooneybar).^2);
+sr=sum((y1-Mooney_model_1).^2);
+Mooney_r1=(st-sr)/st;
+
+Mooneybar=sum(y2)/length(y2);
+st=sum((y2-Mooneybar).^2);
+sr=sum((y2-Mooney_model_2).^2);
+Mooney_r2=(st-sr)/st;
+
+Mooneybar=sum(y3)/length(y3);
+st=sum((y3-Mooneybar).^2);
+sr=sum((y3-Mooney_model_3).^2);
+Mooney_r3=(st-sr)/st;
+
+Mooneybar=sum(y4)/length(y4);
+st=sum((y4-Mooneybar).^2);
+sr=sum((y4-Mooney_model_4).^2);
+Mooney_r4=(st-sr)/st;
+
+Mooneybar=sum(y5)/length(y5);
+st=sum((y5-Mooneybar).^2);
+sr=sum((y5-Mooney_model_5).^2);
+Mooney_r5=(st-sr)/st;
 
 
 function [E]= error(a,x,y)
@@ -288,5 +330,7 @@ function [E]= error(a,x,y)
  E=sum((y-y_model1).^2);
 end
 
-
-
+function [E]= error2(a,x,y)
+y_model=(2*a(1)*(x.^2-(1/x)))+(2*a(2)*(x-(1/x.^2)));
+E=sum(sum((y-y_model).^2));
+end
