@@ -201,7 +201,7 @@ for i=1:length(Mat1)
         loc=i;
     end
 end
-x1=Strain1(1:loc);
+x1=1+Strain1(1:loc);
 y1=Mat1(1:loc);
 max=0;
 for i=1:length(Mat2)
@@ -210,7 +210,7 @@ for i=1:length(Mat2)
         loc=i;
     end
 end
-x2=Strain2(1:loc);
+x2=1+Strain2(1:loc);
 y2=Mat2(1:loc);
 max=0;
 for i=1:length(Mat3)
@@ -219,7 +219,7 @@ for i=1:length(Mat3)
         loc=i;
     end
 end
-x3=Strain3(1:loc);
+x3=1+Strain3(1:loc);
 y3=Mat3(1:loc);
 max=0;
 for i=1:length(Mat4)
@@ -228,7 +228,7 @@ for i=1:length(Mat4)
         loc=i;
     end
 end
-x4=Strain4(1:loc);
+x4=1+Strain4(1:loc);
 y4=Mat4(1:loc);
 max=0;
 for i=1:length(Mat5)
@@ -237,7 +237,7 @@ for i=1:length(Mat5)
         loc=i;
     end
 end
-x5=Strain5(1:loc);
+x5=1+Strain5(1:loc);
 y5=Mat5(1:loc);
 
 
