@@ -33,11 +33,11 @@ title('Stress vs. Strain')
 %B
 
 
-toughness1=trapz(Mat1)
-toughness2=trapz(Mat2)
-toughness3=trapz(Mat3)
-toughness4=trapz(Mat4)
-toughness5=trapz(Mat5)
+toughness1=trapz(Mat1);
+toughness2=trapz(Mat2);
+toughness3=trapz(Mat3);
+toughness4=trapz(Mat4);
+toughness5=trapz(Mat5);
 
 
 %C
@@ -191,4 +191,55 @@ h3=(Strain5(x3+2)-Strain5(x3-2))/5;
 Young5_Value1=(-Mat5(x1+2)+8*Mat5(x1+1)-8*Mat5(x1-1)+Mat5(x1-2))/(12*h1);
 Young5_Value2=(-Mat5(x2+2)+8*Mat5(x2+1)-8*Mat5(x2-1)+Mat5(x2-2))/(12*h2);
 Young5_Value3=(-Mat5(x3+2)+8*Mat5(x3+1)-8*Mat5(x3-1)+Mat5(x3-2))/(12*h3);
+
+
 %D
+max=0;
+for i=1:length(Mat1)
+    if Mat1(i)>max
+        max=Mat1(i);
+        loc=i;
+    end
+end
+x1=Strain1(1:loc);
+y1=Mat1(1:loc);
+max=0;
+for i=1:length(Mat2)
+    if Mat2(i)>max
+        max=Mat2(i);
+        loc=i;
+    end
+end
+x2=Strain2(1:loc);
+y2=Mat2(1:loc);
+max=0;
+for i=1:length(Mat3)
+    if Mat3(i)>max
+        max=Mat3(i);
+        loc=i;
+    end
+end
+x3=Strain3(1:loc);
+y3=Mat3(1:loc);
+max=0;
+for i=1:length(Mat4)
+    if Mat4(i)>max
+        max=Mat4(i);
+        loc=i;
+    end
+end
+x4=Strain4(1:loc);
+y4=Mat4(1:loc);
+max=0;
+for i=1:length(Mat5)
+    if Mat5(i)>max
+        max=Mat5(i);
+        loc=i;
+    end
+end
+x5=Strain5(1:loc);
+y5=Mat5(1:loc);
+
+
+
+
